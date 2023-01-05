@@ -16,5 +16,10 @@ pipeline{
                 }
             }
         }
+        stage('Integration testing'){
+            steps{
+                sh "${mavenCMD} verify -DskipUnitTests"
+            }
+        }
     }
 }
