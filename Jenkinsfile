@@ -9,7 +9,9 @@ pipeline{
         }
         stage('unit testing'){
             steps{
-                sh 'mvn test'
+                def mavenHome = tool name: "Maven-3.8.6", type:"maven"
+                def mavenCMD = "${mavenHome}/bin/mvn"
+                sh "${mavenCMD} mvn test"
             }
         }
     }
