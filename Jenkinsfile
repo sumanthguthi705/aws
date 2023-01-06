@@ -1,4 +1,4 @@
-//OM
+
 pipeline{
     agent any
     stages{
