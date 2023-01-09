@@ -25,13 +25,23 @@ pipeline{
                 }
             }
         }
-        stage('Maven Build')
-        {
+        stage('Maven Build'){
             steps{
                 script{
                     def mavenHome = tool name: "Maven-3.8.6", type:"maven"
                     def mavenCMD = "${mavenHome}/bin/mvn"
                     sh "${mavenCMD} clean install"
+                }
+            }
+        }
+        stage('static code analysis'){
+            steps{
+                script{
+                    withSonarQubeEnv(credentialsId: 'sonar-api-key') {
+                        def mavenHome = tool name: "Maven-3.8.6", type:"maven"
+                        def mavenCMD = "${mavenHome}/bin/mvn"
+                        sh "${mavenCMD} clean package sonar:sonar"
+                    }
                 }
             }
         }
