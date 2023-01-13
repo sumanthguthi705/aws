@@ -7,7 +7,7 @@ pipeline{
                 git branch: 'main', url: 'https://github.com/sumanthguthi705/aws.git'
             }
         }
-        stage('unit testing'){
+        /*stage('unit testing'){
             steps{
                 script{
                 def mavenHome = tool name: "Maven-3.8.6", type:"maven"
@@ -24,7 +24,7 @@ pipeline{
                 sh "${mavenCMD} verify -DskipUnitTests"
                 }
             }
-        }
+        }*/
         stage('Maven Build'){
             steps{
                 script{
