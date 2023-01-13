@@ -59,7 +59,7 @@ pipeline{
                     [
                         [
                             artifactId: 'springboot',
-                            classifier: '', file: 'target/Uber.jar',
+                            classifier: '', file: 'target/Uber.war',
                             type: 'war'
                         ]
                     ],
@@ -70,6 +70,15 @@ pipeline{
                          protocol: 'http',
                          repository: 'Success-Release',
                          version: '6.0.0'
+                }
+            }
+        }
+        stage('Deploy'){
+            steps{
+                script{
+                    sshagent(['tomcat']) {
+                        sh 'scp -o StrictHostKeyChecking=no target/Uber.war ec2-user@18.183.240.136:/opt/tomcat/webapps'
+                    }
                 }
             }
         }
