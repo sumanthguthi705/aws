@@ -63,13 +63,13 @@ pipeline{
                             type: 'jar'
                         ]
                     ],
-                         credentialsId: 'nexus-auth',
+                         credentialsId: 'NEXUSAUTH',
                          groupId: 'com.example', 
                          nexusUrl: '18.183.161.0:8081',
                          nexusVersion: 'nexus3', 
                          protocol: 'http',
-                         repository: 'demoapp-release',
-                         version: '4.0.0'
+                         repository: 'Success-Release',
+                         version: '5.0.0'
                 }
             }
         }
