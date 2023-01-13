@@ -69,7 +69,7 @@ pipeline{
                          nexusVersion: 'nexus3', 
                          protocol: 'http',
                          repository: 'Success-Release',
-                         version: '9.0.0'
+                         version: '9.0.1'
                 }
             }
         }
@@ -77,7 +77,7 @@ pipeline{
             steps{
                 script{
                     sshagent(['tomcat']) {
-                        sh 'scp -o StrictHostKeyChecking=no target/Uber.jar ec2-user@18.183.240.136:/home/ec2-user/opt/tomcat/webapps'
+                        sh 'scp -o StrictHostKeyChecking=no target/Uber.jar tomcat@18.183.240.136:/opt/tomcat/webapps'
                     }
                 }
             }
