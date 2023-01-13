@@ -59,7 +59,7 @@ pipeline{
                     [
                         [
                             artifactId: 'springboot',
-                            classifier: '', file: 'target/Uber.war',
+                            classifier: '', file: 'target/Uber.jar',
                             type: 'war'
                         ]
                     ],
