@@ -60,7 +60,7 @@ pipeline{
                         [
                             artifactId: 'springboot',
                             classifier: '', file: 'target/Uber.jar',
-                            type: 'war'
+                            type: 'jar'
                         ]
                     ],
                          credentialsId: 'NEXUSAUTH',
