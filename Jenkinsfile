@@ -37,7 +37,7 @@ pipeline{
         stage('static code analysis'){
             steps{
                 script{
-                    withSonarQubeEnv(credentialsId: 'sonar-api-key') {
+                    withSonarQubeEnv(credentialsId: 'sonar-api') {
                         def mavenHome = tool name: "Maven-3.8.6", type:"maven"
                         def mavenCMD = "${mavenHome}/bin/mvn"
                         sh "${mavenCMD} clean package sonar:sonar"
@@ -48,7 +48,7 @@ pipeline{
         stage('Quality gate analysis'){
             steps{
                 script{
-                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-api-key'
+                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-api'
                 }
             }
         }
